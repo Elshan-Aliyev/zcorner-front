@@ -68,7 +68,7 @@ const AdminProductAdd = () => {
         buttons: formData.buttons
       };
 
-      await axios.post('http://localhost:5000/api/products', payload, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/products`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

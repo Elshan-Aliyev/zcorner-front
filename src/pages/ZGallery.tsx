@@ -19,7 +19,7 @@ const ZGallery = () => {
 
   const fetchGallery = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/gallery');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/gallery`);
       setImages(response.data);
     } catch (err) {
       console.error('Error fetching gallery:', err);
@@ -30,7 +30,7 @@ const ZGallery = () => {
 
   const fetchSettings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/settings');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/settings`);
       setSectionStyles(response.data.sectionStyles || {});
     } catch (err) {
       console.error('Error fetching settings:', err);
@@ -41,7 +41,7 @@ const ZGallery = () => {
     try {
       const token = localStorage.getItem('token');
       const updatedStyles = { ...sectionStyles, [sectionId]: styles };
-      await axios.put('http://localhost:5000/api/settings', 
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/settings`, 
         { sectionStyles: updatedStyles },
         { headers: { Authorization: `Bearer ${token}` }}
       );

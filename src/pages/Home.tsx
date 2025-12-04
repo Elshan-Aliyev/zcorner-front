@@ -32,8 +32,8 @@ const Home = () => {
 
   const fetchItems = async () => {
     try {
-      const wishlist = await axios.get('http://localhost:5000/api/products?page=wishlist&limit=6');
-      const marketplace = await axios.get('http://localhost:5000/api/products?page=marketplace&limit=6');
+      const wishlist = await axios.get(`${import.meta.env.VITE_API_URL}/api/products?page=wishlist&limit=6`);
+      const marketplace = await axios.get(`${import.meta.env.VITE_API_URL}/api/products?page=marketplace&limit=6`);
       setWishlistItems(wishlist.data);
       setMarketplaceItems(marketplace.data);
     } catch (err) {
@@ -43,7 +43,7 @@ const Home = () => {
 
   const fetchSettings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/settings');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/settings`);
       setHeroImage(response.data.heroImage);
       setNewHeroImage(response.data.heroImage);
       setSectionStyles(response.data.sectionStyles || {});
@@ -56,7 +56,7 @@ const Home = () => {
   const handleUpdateHeroImage = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:5000/api/settings', 
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/settings`, 
         { heroImage: newHeroImage },
         { headers: { Authorization: `Bearer ${token}` }}
       );
@@ -71,7 +71,7 @@ const Home = () => {
     try {
       const token = localStorage.getItem('token');
       const updatedStyles = { ...sectionStyles, [sectionId]: styles };
-      await axios.put('http://localhost:5000/api/settings', 
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/settings`, 
         { sectionStyles: updatedStyles },
         { headers: { Authorization: `Bearer ${token}` }}
       );

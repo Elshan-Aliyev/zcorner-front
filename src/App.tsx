@@ -26,7 +26,7 @@ function App() {
 
   const loadSiteSettings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/settings');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/settings`);
       const settings = response.data;
       
       // Apply CSS variables
