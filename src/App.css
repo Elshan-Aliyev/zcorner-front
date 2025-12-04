@@ -1,0 +1,91 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --button-border-radius: 4px;
+  --button-padding: 0.5rem 1rem;
+}
+
+* {
+  font-family: var(--font-family);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  padding: var(--button-padding);
+  border: none;
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  filter: brightness(0.9);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-color);
+  filter: brightness(0.9);
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card img {
+  object-fit: contain !important;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+img {
+  object-fit: contain;
+}
+
+.drag-drop-box {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+  margin-bottom: 1rem;
+}
+
+.drag-drop-box:hover,
+.drag-drop-box.drag-over {
+  border-color: var(--primary-color);
+  background: #e3f2fd;
+}
+
+.drag-drop-box input[type="file"] {
+  display: none;
+}
