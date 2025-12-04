@@ -17,7 +17,7 @@ export interface SectionStyles {
   textWeight?: string;
 }
 
-const StyleEditor: React.FC<StyleEditorProps> = ({ sectionId, styles, onSave }) => {
+const StyleEditor: React.FC<StyleEditorProps> = ({ styles, onSave }) => {
   const { isAdmin } = useAuth();
   const [showPopup, setShowPopup] = useState(false);
   const [editStyles, setEditStyles] = useState<SectionStyles>(styles);

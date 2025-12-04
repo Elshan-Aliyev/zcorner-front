@@ -16,7 +16,6 @@ const Contact = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [sectionStyles, setSectionStyles] = useState<{[key: string]: SectionStyles}>({});
-  const { isAdmin } = useAuth();
 
   useEffect(() => {
     fetchSettings();
