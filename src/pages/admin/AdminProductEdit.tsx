@@ -124,8 +124,10 @@ const AdminProductEdit = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
       
-      alert('Product deleted successfully');
-      navigate('/dashboard');
+      setSuccess('Product deleted successfully! Redirecting...');
+      // Navigate to the appropriate page based on where the product was
+      const targetPage = formData.page === 'marketplace' ? '/z-marketplace' : '/z-wishlist';
+      setTimeout(() => navigate(targetPage), 1000);
     } catch (err: any) {
       setError(err.response?.data?.message || 'Failed to delete product');
     }
