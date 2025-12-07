@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const fetchSettings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/settings');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/settings`);
       setSettings(response.data);
       setFormData({
         primaryColor: response.data.primaryColor,
@@ -44,7 +44,7 @@ const Dashboard = () => {
   const handleUpdateSettings = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put('http://localhost:5000/api/settings', {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/settings`, {
         primaryColor: formData.primaryColor,
         secondaryColor: formData.secondaryColor,
         fontFamily: formData.fontFamily,

@@ -22,7 +22,7 @@ const Contact = () => {
 
   const fetchSettings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/settings');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/settings`);
       setSectionStyles(response.data.sectionStyles || {});
     } catch (err) {
       console.error('Error fetching settings:', err);
@@ -33,7 +33,7 @@ const Contact = () => {
     try {
       const token = localStorage.getItem('token');
       const updatedStyles = { ...sectionStyles, [sectionId]: styles };
-      await axios.put('http://localhost:5000/api/settings', 
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/settings`, 
         { sectionStyles: updatedStyles },
         { headers: { Authorization: `Bearer ${token}` }}
       );
@@ -54,7 +54,7 @@ const Contact = () => {
     setSuccess('');
 
     try {
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, formData);
       setSuccess('Message sent successfully! We will get back to you soon.');
       setFormData({
         firstName: '',
