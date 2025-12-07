@@ -35,7 +35,7 @@ const AdminProductEdit = () => {
   const fetchProduct = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:5000/api/products/${id}`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -102,7 +102,7 @@ const AdminProductEdit = () => {
         buttons: formData.buttons
       };
 
-      await axios.put(`http://localhost:5000/api/products/${id}`, payload, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/products/${id}`, payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -120,7 +120,7 @@ const AdminProductEdit = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/products/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
